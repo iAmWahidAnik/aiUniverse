@@ -44,6 +44,8 @@ const individualData = id => {
 }
 const individualDataDisplay = data => {
     console.log(data);
-    document.getElementById('modal-right-img').setAttribute('src', data.image_link[0])
+    document.getElementById('modal-right-img').setAttribute('src', data.image_link[0]);
+    document.getElementById('modal').innerText = data.input_output_examples[0].input;
+    document.getElementById('modal-right-p').innerText = data.input_output_examples[0].output;
 }
 loadAllData();
