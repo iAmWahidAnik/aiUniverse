@@ -36,16 +36,19 @@ const DisplayAllData = services => {
 }
 // modal area 
 const individualData = id => {
-    console.log(id)
+    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     fetch(url)
     .then(res => res.json())
     .then(data => individualDataDisplay(data.data))
 }
 const individualDataDisplay = data => {
-    console.log(data);
+    // console.log(data.features.1);
     document.getElementById('modal-right-img').setAttribute('src', data.image_link[0]);
     document.getElementById('modal').innerText = data.input_output_examples[0].input;
     document.getElementById('modal-right-p').innerText = data.input_output_examples[0].output;
+    document.getElementById('modal-card-top').innerText = data.description;
+
+    // document.getElementById('card-list-left-1').innerText = data.features.obj['1'].feature_name;
 }
 loadAllData();
