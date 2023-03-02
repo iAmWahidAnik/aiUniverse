@@ -25,7 +25,7 @@ const DisplayAllData = services => {
             <p class="card-text"><i class="fa-solid fa-calendar-days"></i> ${service.published_in}</p>
             </div>
             <div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-arrow-right"></i></button>
+            <button type="button" class="modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
             </div>
         </div>
