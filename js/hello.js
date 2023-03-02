@@ -7,7 +7,7 @@ const loadAllData = () => {
 const DisplayAllData = services => {
     const parentElement = document.getElementById('parent-container');
     services.forEach(service => {
-        console.log(service);
+        // console.log(service.id);
         const dynamicElement = document.createElement('div');
         dynamicElement.classList.add('col');
         dynamicElement.innerHTML = `
@@ -25,7 +25,7 @@ const DisplayAllData = services => {
             <p class="card-text"><i class="fa-solid fa-calendar-days"></i> ${service.published_in}</p>
             </div>
             <div>
-            <button type="button" class="modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
+            <button onclick="individualData('${service.id}')" type="button" class="modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
             </div>
         </div>
@@ -33,5 +33,17 @@ const DisplayAllData = services => {
         `;
         parentElement.appendChild(dynamicElement);
     })
+}
+// modal area 
+const individualData = id => {
+    console.log(id)
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => individualDataDisplay(data.data))
+}
+const individualDataDisplay = data => {
+    console.log(data);
+    document.getElementById('modal-right-img').setAttribute('src', data.image_link[0])
 }
 loadAllData();

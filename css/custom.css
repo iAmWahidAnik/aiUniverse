@@ -5,3 +5,8 @@
     border: none;
     border-radius: 50%;
 }
+.btn-modify{
+    background-color: #EB5757;
+    padding: 10px;
+    color: white;
+}

@@ -34,10 +34,9 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-content position-relative">
+                        <div class="text-end position-absolute top-0 start-100 translate-middle">
+                            <button type="button" class="btn-close btn-modify" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -54,9 +53,9 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="..." class="card-img-top" alt="...">
+                                        <img id="modal-right-img" src="..." class="card-img-top h-100 w-auto p-3 rounded" alt="...">
                                         <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
+                                            <h5 id="modal" class="card-title"></h5>
                                             <p class="card-text">This is a longer card with supporting text below as a
                                                 natural lead-in to additional content. This content is a little bit
                                                 longer.</p>
