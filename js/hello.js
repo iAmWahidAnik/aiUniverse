@@ -1,11 +1,20 @@
-const loadAllData = () => {
+const loadAllData = dataLimit => {
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
     fetch(url)
     .then(res => res.json())
-    .then(data => DisplayAllData(data.data.tools))
+    .then(data => DisplayAllData(data.data.tools, dataLimit))
 }
-const DisplayAllData = services => {
+const DisplayAllData = (services, dataLimit) => {
     const parentElement = document.getElementById('parent-container');
+    parentElement.innerHTML = '';
+    const showMoreButton = document.getElementById('show-more-btn');
+    if(dataLimit){
+        services = services.slice(0, 6);
+        showMoreButton.classList.remove('d-none')
+    }
+    else{
+        showMoreButton.classList.add('d-none')
+    }
     services.forEach(service => {
         // console.log(service.id);
         const dynamicElement = document.createElement('div');
@@ -49,21 +58,23 @@ const individualDataDisplay = data => {
     document.getElementById('modal-right-p').innerText = data.input_output_examples[0].output;
     document.getElementById('modal-card-top').innerText = data.description;
 
-    document.getElementById('plan-1').innerText = data.pricing[0].price;
+    // plan and pricing
+    document.getElementById('plan-1').innerText = data.pricing[0].price ? data.pricing[0].price : 'free of cost';
     document.getElementById('plan-1-ex').innerText = data.pricing[0].plan;
-    document.getElementById('plan-2').innerText = data.pricing[1].price;
+    document.getElementById('plan-2').innerText = data.pricing[1].price ? data.pricing[1].price : 'free of cost';
     document.getElementById('plan-2-ex').innerText = data.pricing[1].plan;
-    document.getElementById('plan-3').innerText = data.pricing[2].price;
+    document.getElementById('plan-3').innerText = data.pricing[2].price ? data.pricing[2].price : 'free of cost'
     document.getElementById('plan-3-ex').innerText = data.pricing[2].plan;
     
-
+    // features 
     document.getElementById('card-list-left-1').innerText = data.features['1'].feature_name;
     document.getElementById('card-list-left-2').innerText = data.features['2'].feature_name;
     document.getElementById('card-list-left-3').innerText = data.features['3'].feature_name;
 
-    document.getElementById('card-list-right-1').innerText = data.integrations[0];
-    document.getElementById('card-list-right-2').innerText = data.integrations[1];
-    document.getElementById('card-list-right-3').innerText = data.integrations[2];
+    // integrations 
+    document.getElementById('card-list-right-1').innerText = data.integrations[0] ? data.integrations[0] : 'No data Found';
+    document.getElementById('card-list-right-2').innerText = data.integrations[1] ? data.integrations[1] : 'No data Found';
+    document.getElementById('card-list-right-3').innerText = data.integrations[2] ? data.integrations[2] : 'No data Found';
 
     // accuracy
     const accuracySpan = document.getElementById('accuracy');
@@ -77,4 +88,4 @@ const individualDataDisplay = data => {
     }
     
 }
-loadAllData();
+loadAllData(6);
