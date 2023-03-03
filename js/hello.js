@@ -43,12 +43,26 @@ const individualData = id => {
     .then(data => individualDataDisplay(data.data))
 }
 const individualDataDisplay = data => {
-    // console.log(data.features.1);
+    console.log(data.pricing[0].plan);
     document.getElementById('modal-right-img').setAttribute('src', data.image_link[0]);
     document.getElementById('modal').innerText = data.input_output_examples[0].input;
     document.getElementById('modal-right-p').innerText = data.input_output_examples[0].output;
     document.getElementById('modal-card-top').innerText = data.description;
 
-    // document.getElementById('card-list-left-1').innerText = data.features.obj['1'].feature_name;
+    document.getElementById('plan-1').innerText = data.pricing[0].price;
+    document.getElementById('plan-1-ex').innerText = data.pricing[0].plan;
+    document.getElementById('plan-2').innerText = data.pricing[1].price;
+    document.getElementById('plan-2-ex').innerText = data.pricing[1].plan;
+    document.getElementById('plan-3').innerText = data.pricing[2].price;
+    document.getElementById('plan-3-ex').innerText = data.pricing[2].plan;
+    
+
+    document.getElementById('card-list-left-1').innerText = data.features['1'].feature_name;
+    document.getElementById('card-list-left-2').innerText = data.features['2'].feature_name;
+    document.getElementById('card-list-left-3').innerText = data.features['3'].feature_name;
+
+    document.getElementById('card-list-right-1').innerText = data.integrations[0];
+    document.getElementById('card-list-right-2').innerText = data.integrations[1];
+    document.getElementById('card-list-right-3').innerText = data.integrations[2];
 }
 loadAllData();

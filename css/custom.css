@@ -10,3 +10,8 @@
     padding: 10px;
     color: white;
 }
+.modal-card-left{
+    background: rgba(235, 87, 87, 0.05);
+    border: none;
+    outline: none;
+}
