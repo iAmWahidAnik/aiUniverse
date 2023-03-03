@@ -1,4 +1,6 @@
+const spinner = document.getElementById('spinner');
 const loadAllData = dataLimit => {
+    spinner.classList.remove('d-none');
     const url = 'https://openapi.programming-hero.com/api/ai/tools'
     fetch(url)
     .then(res => res.json())
@@ -41,6 +43,7 @@ const DisplayAllData = (services, dataLimit) => {
         </div>
         `;
         parentElement.appendChild(dynamicElement);
+        spinner.classList.add('d-none');
     })
 }
 // modal area 
