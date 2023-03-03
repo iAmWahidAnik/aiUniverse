@@ -64,5 +64,17 @@ const individualDataDisplay = data => {
     document.getElementById('card-list-right-1').innerText = data.integrations[0];
     document.getElementById('card-list-right-2').innerText = data.integrations[1];
     document.getElementById('card-list-right-3').innerText = data.integrations[2];
+
+    // accuracy
+    const accuracySpan = document.getElementById('accuracy');
+    const accuracyButton = document.getElementById('accuracy-button');
+    if(data.accuracy.score){
+        accuracySpan.innerText = data.accuracy.score;
+        accuracyButton.classList.remove('d-none');
+    }
+    else{
+        accuracyButton.classList.add('d-none');
+    }
+    
 }
 loadAllData();
