@@ -18,7 +18,6 @@ const DisplayAllData = (services, dataLimit) => {
         showMoreButton.classList.add('d-none')
     }
     services.forEach(service => {
-        // console.log(service.id);
         const dynamicElement = document.createElement('div');
         dynamicElement.classList.add('col');
         dynamicElement.innerHTML = `
@@ -48,14 +47,12 @@ const DisplayAllData = (services, dataLimit) => {
 }
 // modal area 
 const individualData = id => {
-    console.log(id)
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     fetch(url)
     .then(res => res.json())
     .then(data => individualDataDisplay(data.data))
 }
 const individualDataDisplay = data => {
-    // console.log(data.pricing[0].plan);
     // modal right side 
     // modal image 
     document.getElementById('modal-right-img').setAttribute('src', data.image_link[0]);
@@ -87,7 +84,7 @@ const individualDataDisplay = data => {
     const accuracySpan = document.getElementById('accuracy');
     const accuracyButton = document.getElementById('accuracy-button');
     if(data.accuracy.score){
-        accuracySpan.innerText = data.accuracy.score;
+        accuracySpan.innerText = data.accuracy.score * 100;
         accuracyButton.classList.remove('d-none');
     }
     else{
